@@ -1,6 +1,15 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "rails"
+# Pick the frameworks you want:
+require "active_model/railtie"
+require "active_job/railtie"
+require "active_record/railtie"
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "action_view/railtie"
+require "sprockets/railtie"
+# require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -20,6 +29,22 @@ module RubyCapstone
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    Mongoid.load! './config/mongoid.yml'
+    #which default ORM are we using with scaffold?
+    #add `--orm mongoid`, or active_record, to rails generate cmd line to be specific
+    config.generators {|g| g.orm :active_record}
+    #config.generators {|g| g.orm :mongoid}
+
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'     #can use '*' during development, but DEFINITELY FIX FOR PROD!
+
+        resource '/api/*',
+          :headers => :any,
+          :methods => [:get, :post, :put, :delete, :options]
+      end
+    end
+        
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end
