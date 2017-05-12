@@ -2,12 +2,12 @@
     "use strict";
 
     angular
-        .module("spa-demo")
+        .module("spa_demo")
         .config(RouterFunction);
 
      RouterFunction.$inject = ["$stateProvider",
                                 "$urlRouterProvider",
-                                "spa-demo.APP_CONFIG"];
+                                "spa_demo.APP_CONFIG"];
 
      function RouterFunction($stateProvider, $urlRouterProvider, APP_CONFIG) {
         $stateProvider

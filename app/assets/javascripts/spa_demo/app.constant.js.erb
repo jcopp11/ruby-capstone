@@ -2,12 +2,12 @@
     "use strict";
 
     angular
-        .module("spa-demo")
-        .constant("spa-demo.APP_CONFIG", {
+        .module("spa_demo")
+        .constant("spa_demo.APP_CONFIG", {
         	server_url: "<%= ENV['RAILS_API_URL'] %>",
 
-            main_page_html: "<%= asset_path('spa-demo/pages/main.html') %>",
+            main_page_html: "<%= asset_path('spa_demo/pages/main.html') %>",
 
-            cities_html: "<%= asset_path('spa-demo/cities/cities.html') %>"
+            cities_html: "<%= asset_path('spa_demo/cities/cities.html') %>"
         });
 })();

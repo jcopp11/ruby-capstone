@@ -2,7 +2,7 @@
     "use strict";
 
     angular
-        .module("spa-demo.cities", [
+        .module("spa_demo.cities", [
             "ngResource"
         ]);
 })();

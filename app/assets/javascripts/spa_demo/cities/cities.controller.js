@@ -1,11 +1,11 @@
 (function() {
-    'use strict';
+    "use strict";
 
     angular
-        .module('spa-demo.cities')
-        .controller('spa-demo.cities.CitiesController', CitiesController);
+        .module("spa_demo.cities")
+        .controller("spa_demo.cities.CitiesController", CitiesController);
 
-    CitiesController.$inject = ['spa-demo.cities.City'];
+    CitiesController.$inject = ["spa_demo.cities.City"];
 
     /* @ngInject */
     function CitiesController(City) {
@@ -38,8 +38,8 @@
        function create() { 	
         //console.log("create city" , vm.city);
         vm.city.$save()
-          .then(function(responce){
-           // console.log(responce);
+          .then(function(response){
+           // console.log(response);
             vm.cities.push(vm.city);
             newCity(); 
           })
@@ -47,8 +47,8 @@
         }
        function update() {
           vm.city.$update()
-          .then(function(responce){
-            //console.log(responce);
+          .then(function(response){
+            //console.log(response);
             
           })
           .catch(handleError);
@@ -56,8 +56,8 @@
         function remove() {
   
           vm.city.$delete()
-          .then(function(responce){
-            //console.log(responce);
+          .then(function(response){
+            //console.log(response);
             vm.cities = City.query()
             newCity();
             
